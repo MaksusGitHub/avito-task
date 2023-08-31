@@ -34,6 +34,22 @@ class Api {
     })
     .then((res) => this._checkStatus(res))
   }
+
+  getFilteredGamesByPlatform(platform) {
+    return fetch(`${this._url}/games?platform=${platform}`, {
+      method: 'GET',
+      headers: this._headers,
+    })
+    .then((res) => this._checkStatus(res))
+  }
+
+  getFilteredGamesByGenre(genre) {
+    return fetch(`${this._url}/games?category=${genre}`, {
+      method: 'GET',
+      headers: this._headers,
+    })
+    .then((res) => this._checkStatus(res))
+  }
 }
 
 const api = new Api({

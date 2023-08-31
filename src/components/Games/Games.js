@@ -1,18 +1,17 @@
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './Games.css'
 
-function Games(props) {
-  // const { gameCard } = props;
+function Games() {
   const gameCard = JSON.parse(localStorage.getItem('currentGame'));
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (gameCard === null) {
-  //     navigate('/', { replace: true });
-  //   }
-  // }, [gameCard, navigate])
+  useEffect(() => {
+    if (gameCard === null) {
+      navigate('/', { replace: true });
+    }
+  }, [gameCard, navigate])
 
   const handleBackBtnClick = () => {
     navigate('/');
