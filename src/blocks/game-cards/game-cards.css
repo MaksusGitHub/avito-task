@@ -1,0 +1,15 @@
+.game-cards {
+  margin: 0 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(284px, 1fr));
+  justify-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 1080px) {
+  .game-cards {
+    margin: 0 auto;
+    max-width: 1024px;
+  }
+}

@@ -1,0 +1,8 @@
+.card__genre {
+  margin: 0;
+  padding: 5px 10px;
+  display: inline-block;
+  background-color: #7a8288;
+  border-radius: 15px;
+  text-align: center;
+}

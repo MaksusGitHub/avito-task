@@ -1,0 +1,12 @@
+.specific-game__back-btn {
+  all: unset;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #007bff;
+  transition: opacity .3s;
+  cursor: pointer;
+}
+
+.specific-game__back-btn:hover {
+  opacity: .5;
+}

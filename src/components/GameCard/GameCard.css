@@ -1,0 +1,7 @@
+@import url('../../blocks/card/card.css');
+@import url('../../blocks/card/__picture/card__picture.css');
+@import url('../../blocks/card/__title/card__title.css');
+@import url('../../blocks/card/__publisher/card__publisher.css');
+@import url('../../blocks/card/__release-date/card__release-date.css');
+@import url('../../blocks/card/__genre/card__genre.css');
+@import url('../../blocks/card/__extra-info/card__extra-info.css');

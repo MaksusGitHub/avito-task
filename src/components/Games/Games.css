@@ -1,0 +1,11 @@
+@import url('../../blocks/specific-game/specific-game.css');
+@import url('../../blocks/specific-game/__picture/specific-game__picture.css');
+@import url('../../blocks//specific-game/__title/specific-game__title.css');
+@import url('../../blocks/specific-game/__short-description/specific-game__short-description.css');
+@import url('../../blocks/specific-game/__article/specific-game__article.css');
+@import url('../../blocks/specific-game/__article-heading/specific-game__article-heading.css');
+@import url('../../blocks/specific-game/__parameter-container/specific-game__parameter-container.css');
+@import url('../../blocks/specific-game/__parameter-title/specific-game__parameter-title.css');
+@import url('../../blocks/specific-game/__parameter-value/specific-game__parameter-value.css');
+@import url('../../blocks/specific-game/__screenshot/specific-game__screenshot.css');
+@import url('../../blocks/specific-game/__back-btn/specific-game__back-btn.css');
