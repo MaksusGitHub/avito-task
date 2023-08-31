@@ -11,7 +11,6 @@ import Preloader from '../Preloader/Preloader';
 function App() {
   const [gameCards, setGameCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [currentCard, setCurrentCard] = useState({});
 
   const navigate = useNavigate();
 
@@ -27,10 +26,7 @@ function App() {
 
   const handleGameCardClick = (id) => {
     api.getSpecificGame(id).then((card) => {
-      // setCurrentCard(card);
-      
-      localStorage.setItem('currentGame', JSON.stringify(card), 10);
-      // 300000
+      localStorage.setItem('currentGame', JSON.stringify(card));
     })
       .catch((err) => {
         alert(err);
@@ -42,6 +38,26 @@ function App() {
 
   const handleSortingClick = (sortBy) => {
     api.getSortedGames(sortBy).then((cards) => {
+      setGameCards(cards);
+    })
+    .catch((err) => {
+      alert(err);
+    })
+    .finally(() => setIsLoading(false));
+  }
+
+  const handleFilterByPlatform = (platform) => {
+    api.getFilteredGamesByPlatform(platform).then((cards) => {
+      setGameCards(cards);
+    })
+    .catch((err) => {
+      alert(err);
+    })
+    .finally(() => setIsLoading(false));
+  }
+
+  const handleFilterByGenre = (genre) => {
+    api.getFilteredGamesByGenre(genre).then((cards) => {
       setGameCards(cards);
     })
     .catch((err) => {
@@ -64,6 +80,8 @@ function App() {
                   gameCards={gameCards}
                   onGameCardClick={handleGameCardClick}
                   onSortingClick={handleSortingClick}
+                  onFilterByPlatform={handleFilterByPlatform}
+                  onFilterByGenre={handleFilterByGenre}
                 />
               }
             />
@@ -71,7 +89,6 @@ function App() {
               path='/games'
               element={
                 <Games
-                // gameCard={currentCard}
                 />
               }
             />

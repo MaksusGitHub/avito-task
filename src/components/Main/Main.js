@@ -23,11 +23,10 @@ let amountShowCards = (window.innerWidth > DESKTOP_SCREEN_WIDTH)
     : MOBILE_AMOUNT_CARDS);
 
 function Main(props) {
-  const { gameCards, onGameCardClick, onSortingClick } = props;
-  const [genre, setGenre] = useState('all');
+  const { gameCards, onGameCardClick, onSortingClick, onFilterByPlatform, onFilterByGenre } = props;
+  const [genre, setGenre] = useState('mmorpg');
   const [platform, setPlatform] = useState('all');
   const [sortBy, setSortBy] = useState('release_date');
-  const [cards, setCards] = useState([]);
   const [visibleCards, setVisibleCards] = useState(gameCards.slice(0, amountShowCards));
   const [cardPosition, setCardPosition] = useState(amountShowCards);
 
@@ -42,10 +41,12 @@ function Main(props) {
 
   const handleGenreChange = (e) => {
     setGenre(e.target.value);
+    onFilterByGenre(e.target.value);
   }
 
   const handlePlatformChange = (e) => {
     setPlatform(e.target.value);
+    onFilterByPlatform(e.target.value);
   }
 
   const handleSortingChange = (e) => {
@@ -53,27 +54,13 @@ function Main(props) {
     onSortingClick(e.target.value);
   }
 
-  const handleFilterSubmit = (e) => {
-    e.preventDefault();
-    if (genre === 'all' && platform === 'all') {
-      setCards(gameCards);
-    } else if (genre === 'all' && platform !== 'all') {
-      setCards(gameCards.filter((card) => card.platform === platform));
-    } else if (genre !== 'all' && platform === 'all') {
-      setCards(gameCards.filter((card) => card.genre.toLowerCase() === genre));
-    } else {
-      setCards(gameCards.filter((card) => (card.genre.toLowerCase() === genre && card.platform === platform)));
-    }
-  }
-
   return (
     <main className='root'>
       <section className='sorting-section'>
-        <form className='sort-form' onSubmit={handleFilterSubmit}>
+        <form className='sort-form'>
           <label className='sort-form__option'>
             <span className='sort-form__option-name'>Выберите жанр:</span>
             <select className='sort-form__select' value={genre} onChange={handleGenreChange}>
-              <option value='all'>All</option>
               <option value='mmorpg'>MMORPG</option>
               <option value='shooter'>Shooter</option>
               <option value='strategy'>Strategy</option>
@@ -81,23 +68,56 @@ function Main(props) {
               <option value='racing'>Racing</option>
               <option value='sports'>Sports</option>
               <option value='social'>Social</option>
+              <option value='sandbox'>Sandbox</option>
+              <option value='open-world'>Open-world</option>
+              <option value='survival'>Survival</option>
+              <option value='pvp'>PVP</option>
+              <option value='pve'>PVE</option>
+              <option value='pixel'>Pixel</option>
+              <option value='voxel'>Voxel</option>
+              <option value='zombie'>Zombie</option>
+              <option value='turn-based'>Turn-based</option>
+              <option value='first-person'>First-person</option>
+              <option value='third-Person'>Third-Person</option>
+              <option value='top-down'>Top-down</option>
+              <option value='tank'>Tank</option>
+              <option value='space'>Space</option>
+              <option value='sailing'>Sailing</option>
+              <option value='side-scroller'>Side-scroller</option>
+              <option value='superhero'>Superhero</option>
+              <option value='permadeath'>Permadeath</option>
+              <option value='card'>Card</option>
+              <option value='battle-royale'>Battle-Royale</option>
               <option value='mmo'>MMO</option>
+              <option value='mmofps'>MMOFPS</option>
+              <option value='mmotps'>MMOTPS</option>
+              <option value='3d'>3D</option>
+              <option value='2d'>2D</option>
+              <option value='anime'>Anime</option>
               <option value='fantasy'>Fantasy</option>
+              <option value='sci-fi'>Sci-fi</option>
               <option value='fighting'>Fighting</option>
-              <option value='action rpg'>Action RPG</option>
-              <option value='battle royale'>Battle Royale</option>
-              <option value='card game'>Card Game</option>
+              <option value='action-rpg'>Action-RPG</option>
+              <option value='action'>Action</option>
+              <option value='military'>Military</option>
+              <option value='martial-arts'>Martial-arts</option>
+              <option value='flight'>Flight</option>
+              <option value='low-spec'>Low-spec</option>
+              <option value='tower-defense'>Tower-defense</option>
+              <option value='horror'>Horror</option>
+              <option value='mmorts'>MMORTS</option>
             </select>
           </label>
+        </form>
+        <form className='sort-form'>
           <label className='sort-form__option'>
             <span>Выберите платформу:</span>
             <select className='sort-form__select' value={platform} onChange={handlePlatformChange}>
               <option value='all'>All</option>
-              <option value='PC (Windows)'>PC</option>
-              <option value='Web Browser'>Browser</option>
+              <option value='pc'>PC</option>
+              <option value='browser'>Browser</option>
             </select>
           </label>
-          {/* <input type='submit' value='Отфильтровать'></input> */}
         </form>
         <form className='sort-form'>
           <label className='sort-form__option'>
