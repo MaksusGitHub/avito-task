@@ -1,0 +1,9 @@
+.specific-game__title {
+  margin: 0;
+  margin-bottom: 8px;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 510;
+  color: #aaa;
+  text-shadow: -1px -1px 0 rgba(0,0,0,.3);
+}

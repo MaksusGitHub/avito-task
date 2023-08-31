@@ -1,0 +1,14 @@
+.header {
+  margin: 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+
+@media (min-width: 1024px) {
+  .header {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+}
