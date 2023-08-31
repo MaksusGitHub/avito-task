@@ -1,0 +1,10 @@
+@import url('../../blocks/root/root.css');
+@import url('../../blocks/game-cards/game-cards.css');
+@import url('../../blocks/sort-form/sort-form.css');
+@import url('../../blocks/sort-form/___option/sort-form__option.css');
+@import url('../../blocks/sort-form/__select/sort-form__select.css');
+@import url('../../blocks/sorting-section/sorting-section.css');
+@import url('../../blocks/sort-form/__option-name/sort-form__option-name.css');
+@import url('../../blocks/game-cards/__more-container/game-cards__more-container.css');
+@import url('../../blocks/game-cards/__more/game-cards__more.css');
+@import url('../../blocks/game-cards/__list/game-cards__list.css');

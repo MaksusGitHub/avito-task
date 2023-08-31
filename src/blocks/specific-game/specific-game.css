@@ -1,0 +1,17 @@
+.specific-game {
+  margin: 0 auto;
+  padding: 24px 15px;
+  /* text-align: center; */
+}
+
+@media (min-width: 400px) {
+  .specific-game {
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .specific-game {
+    max-width: 600px;
+  }
+}

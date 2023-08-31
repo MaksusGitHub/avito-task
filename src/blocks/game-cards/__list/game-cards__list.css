@@ -1,0 +1,16 @@
+.game-cards__list {
+  margin: 0 12px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(284px, 1fr));
+  justify-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 1080px) {
+  .game-cards__list {
+    margin: 0 auto;
+    max-width: 1024px;
+  }
+}

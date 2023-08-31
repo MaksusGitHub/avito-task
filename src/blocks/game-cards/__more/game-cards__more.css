@@ -1,0 +1,18 @@
+.game-cards__more {
+  all: unset;
+  margin-bottom: 100px;
+  font-weight: 400;
+  font-size: 12px;
+  padding-top: 11px;
+  padding-bottom: 9px;
+  background-color: #49acff;
+  width: 300px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity .2s linear;
+}
+
+.movies-list__more:hover {
+  opacity: .7;
+}

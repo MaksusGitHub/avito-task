@@ -1,0 +1,15 @@
+.sorting-section {
+  margin: 0 auto;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+@media (min-width: 600px) {
+  .sorting-section {
+    flex-direction: row;
+  }
+}
