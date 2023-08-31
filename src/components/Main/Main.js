@@ -31,10 +31,6 @@ function Main(props) {
   const [visibleCards, setVisibleCards] = useState(gameCards.slice(0, amountShowCards));
   const [cardPosition, setCardPosition] = useState(amountShowCards);
 
-  // useEffect(() => {
-  //   setCards(gameCards);
-  // }, [gameCards]);
-
   useEffect(() => {
     setVisibleCards(gameCards.slice(0, amountShowCards));
   }, [gameCards])
