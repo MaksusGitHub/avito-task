@@ -2,16 +2,47 @@ import React, { useEffect, useState } from 'react';
 import GameCard from '../GameCard/GameCard';
 import './Main.css'
 
+import {
+  DESKTOP_AMOUNT_CARDS,
+  DESKTOP_SCREEN_WIDTH,
+  DESKTOP_SHOWCARD_STEP,
+  MOBILE_AMOUNT_CARDS,
+  TABLET_AMOUNT_CARDS,
+  TABLET_SCREEN_WIDTH,
+  TABLET_SHOWCARD_STEP
+} from '../../utils/constants';
+
+let moreStep = (window.innerWidth > DESKTOP_SCREEN_WIDTH)
+  ? DESKTOP_SHOWCARD_STEP
+  : TABLET_SHOWCARD_STEP;
+
+let amountShowCards = (window.innerWidth > DESKTOP_SCREEN_WIDTH)
+  ? DESKTOP_AMOUNT_CARDS
+  : ((window.innerWidth > TABLET_SCREEN_WIDTH)
+    ? TABLET_AMOUNT_CARDS
+    : MOBILE_AMOUNT_CARDS);
+
 function Main(props) {
   const { gameCards, onGameCardClick, onSortingClick } = props;
   const [genre, setGenre] = useState('all');
   const [platform, setPlatform] = useState('all');
   const [sortBy, setSortBy] = useState('release_date');
   const [cards, setCards] = useState([]);
+  const [visibleCards, setVisibleCards] = useState(gameCards.slice(0, amountShowCards));
+  const [cardPosition, setCardPosition] = useState(amountShowCards);
+
+  // useEffect(() => {
+  //   setCards(gameCards);
+  // }, [gameCards]);
 
   useEffect(() => {
-    setCards(gameCards);
-  }, [gameCards]);
+    setVisibleCards(gameCards.slice(0, amountShowCards));
+  }, [gameCards])
+
+  const showMore = () => {
+    setVisibleCards(gameCards.slice(0, cardPosition + moreStep));
+    setCardPosition(cardPosition + moreStep);
+  }
 
   const handleGenreChange = (e) => {
     setGenre(e.target.value);
@@ -85,15 +116,23 @@ function Main(props) {
         </form>
       </section>
       <section className='game-cards' aria-label='Игровые карточки'>
-        {
-          cards.map((card) => {
-            return <GameCard
-              key={card.id}
-              gameCard={card}
-              onGameCardClick={onGameCardClick}
-            />
-          })
-        }
+        <ul className='game-cards__list'>
+          {
+            visibleCards.map((card) => {
+              return <GameCard
+                key={card.id}
+                gameCard={card}
+                onGameCardClick={onGameCardClick}
+              />
+            })
+          }
+        </ul>
+      {(gameCards.length > cardPosition) ? (
+        <div className='game-cards__more-container'>
+          <button type='button' className='game-cards__more' onClick={showMore}>Ещё</button>
+        </div>
+      ) : null
+      }  
       </section>
     </main>
   )
